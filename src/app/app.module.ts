@@ -1,18 +1,41 @@
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OpportunityComponent } from './opportunity/opportunity.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileService } from './profile.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddProfileComponent } from './profile/add-profile/add-profile.component';
+import { AddOpportunityComponent } from './opportunity/add-opportunity/add-opportunity.component';
+import { appRoutes } from './router-config';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent,
+    OpportunityComponent,
+    HeaderComponent,
+    SidebarComponent,
+    DashboardComponent,
+    AddProfileComponent,
+    AddOpportunityComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ ProfileService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
