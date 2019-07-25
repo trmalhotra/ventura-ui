@@ -17,29 +17,26 @@
   <table class="table-sm table-bordered table">
     <thead>
     <tr class="table-info">
+      <th class="d-none"></th>
+      <th>Select</th>
       <th>Candidate Name</th>
       <th>Email ID</th>
       <th>Phone Number</th>
       <th>Title</th>
-      <th>Experience (in years)</th>
-      <th>Profile Summary</th>
-      <th>Primary Skills</th>
-      <th>Secondary Skills</th>
-      <th>Delete Profile</th>
     </tr>
   </thead>
     <tbody>
     <tr *ngFor="let profile of profiles">
-      <td>{{ profile.candidateName }}</td>
+        <td  class="d-none"><input type="hidden" value="profile.id" /></td>
+      <td><input type="checkbox"/></td>
+       <td><a href="#" role="button" (click)="onClickShowModal(profile)" data-toggle="modal" data-target="#modalShowProfile">{{ profile.firstName }}  {{ profile.lastName }}</a></td>
       <td>{{ profile.emailId }}</td>
       <td>{{ profile.phoneNumber }}</td>
       <td>{{ profile.title }}</td>
-      <td>{{ profile.numberOfYearsExp }}</td>
-      <td>{{ profile.profileSummary }}</td>
-      <td>{{ profile.primarySkills }}</td>
-      <td>{{ profile.secondarySkills }} </td>
-      <td><button class="btn btn-danger" (click)="deleteProfile(profile)">Delete</button></td>
     </tr>
     </tbody>
   </table>
+  <button class="btn btn-danger" (click)="deleteProfile($event)">Delete</button>
   </div>
+
+  <app-show-profile ></app-show-profile>

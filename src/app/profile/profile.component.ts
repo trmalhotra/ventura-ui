@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Profile } from '../profile.model';
 import { Router } from '@angular/router';
 import { ProfileService } from '../profile.service';
@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   profiles: Profile[];
 
   modalVisible = false;
+
+  @Output() selectedProfile = new EventEmitter();
 
   constructor(private router: Router, private profileService: ProfileService) { }
 
@@ -41,6 +43,11 @@ export class ProfileComponent implements OnInit {
   updateTable(event) {
     console.log(event);
     this.profiles.push(event);
+  }
+
+  onClickShowModal(profile) {
+   //alert(profile.firstName);
+    this.selectedProfile.emit(profile);
   }
 
 }

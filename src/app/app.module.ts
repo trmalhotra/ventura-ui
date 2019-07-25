@@ -16,6 +16,7 @@ import { AddProfileComponent } from './profile/add-profile/add-profile.component
 import { AddOpportunityComponent } from './opportunity/add-opportunity/add-opportunity.component';
 import { appRoutes } from './router-config';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ShowProfileComponent } from './profile/show-profile/show-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     SidebarComponent,
     DashboardComponent,
     AddProfileComponent,
-    AddOpportunityComponent
+    AddOpportunityComponent,
+    ShowProfileComponent
   ],
   imports: [
     BrowserModule,

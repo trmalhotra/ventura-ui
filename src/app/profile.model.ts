@@ -1,5 +1,7 @@
 export class Profile {
-  candidateName: string;
+  id: string;
+  firstName: string;
+  lastName: string;
   emailId: string;
   phoneNumber: string;
   title: string;
@@ -7,4 +9,5 @@ export class Profile {
   profileSummary: string;
   primarySkills: string[];
   secondarySkills: string[];
+  isActive: boolean;
 }
