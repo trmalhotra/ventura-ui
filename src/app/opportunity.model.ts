@@ -1,4 +1,5 @@
 export class Opportunity {
+  id: string;
   sfId: string;
   portfolio: string;
   clientOwner: string;
@@ -10,4 +11,7 @@ export class Opportunity {
   candidatesIdentified: number;
   positionStartDate: Date;
   dateCreated: Date;
+  isActive: boolean;
+  selected: boolean;
+  profileIds: string[];
 }

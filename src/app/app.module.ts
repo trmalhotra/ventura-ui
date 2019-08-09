@@ -17,6 +17,14 @@ import { AddOpportunityComponent } from './opportunity/add-opportunity/add-oppor
 import { appRoutes } from './router-config';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ShowProfileComponent } from './profile/show-profile/show-profile.component';
+import { ConfirmDeleteComponent } from './profile/confirm-delete/confirm-delete.component';
+import { SelectProfileComponent } from './profile/select-profile/select-profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { SelectOneProfileComponent } from './profile/select-one-profile/select-one-profile.component';
+import { ConfirmDeleteOpportunityComponent } from './opportunity/confirm-delete-opportunity/confirm-delete-opportunity.component';
+import { EditOpportunityComponent } from './opportunity/edit-opportunity/edit-opportunity.component';
+import { SelectOpportunityComponent } from './opportunity/select-opportunity/select-opportunity.component';
+import { SelectOneOpportunityComponent } from './opportunity/select-one-opportunity/select-one-opportunity.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,15 @@ import { ShowProfileComponent } from './profile/show-profile/show-profile.compon
     DashboardComponent,
     AddProfileComponent,
     AddOpportunityComponent,
-    ShowProfileComponent
+    ShowProfileComponent,
+    ConfirmDeleteComponent,
+    SelectProfileComponent,
+    EditProfileComponent,
+    SelectOneProfileComponent,
+    ConfirmDeleteOpportunityComponent,
+    EditOpportunityComponent,
+    SelectOpportunityComponent,
+    SelectOneOpportunityComponent
   ],
   imports: [
     BrowserModule,

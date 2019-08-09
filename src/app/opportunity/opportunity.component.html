@@ -1,3 +1,68 @@
-<p>
-  opportunity works!
-</p>
+
+
+<app-add-opportunity (closeOpportunityModalEvent)="updateTable($event)"></app-add-opportunity>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Opportunity</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#opportunityModal" >Add an Opportunity</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive-lg">
+        <table class="table-sm table">
+          <thead>
+          <tr class="table-info">
+            <th class="d-none"></th>
+            <th  style="text-align: center">
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" (change)="selectAll()" [checked]="selectedAll" />
+                <label class="form-check-label">
+                </label>
+              </div>
+        </th>
+            <th>Position</th>
+            <th>Portfolio</th>
+            <th>Client Owner</th>
+            <th>Position Start Date</th>
+            <th>Program Name</th>
+            <th>LTI POC</th>
+            <th>Recruitment POC</th>
+            <th># of Positions</th>
+            <th>Candidates Identified</th>
+          </tr>
+        </thead>
+          <tbody>
+          <tr *ngFor="let opportunity of opportunities">
+            <td  class="d-none"><input type="hidden" value="opportunity.id"/></td>
+            <td style="text-align: center"><div class="form-check"><input type="checkbox" class="form-check-input" name="{{ opportunity.position }}" type="checkbox" id="{{opportunity.id}}"  [(ngModel)]="opportunity.selected" (change)="onChangeOpportunity($event.target.checked, opportunity); onChangeSelected();"/></div></td>
+            <td>{{ opportunity.position }}</td>
+            <td>{{ opportunity.portfolio }}</td>
+            <td>{{ opportunity.clientOwner }}</td>
+            <td>{{ opportunity.positionStartDate | date }}</td>
+            <td>{{ opportunity.programName }}</td>
+            <td>{{ opportunity.ltiPoc }}</td>
+            <td>{{ opportunity.recruitmentPoc }}</td>
+            <td>{{ opportunity.numberOfPositions}}</td>
+            <td>{{ opportunity.candidatesIdentified}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div>
+            <table width="80%">
+              <tr>
+                  <td  style="text-align: right"><button class="btn btn-primary" (click)="validateEditSelection();">Edit</button></td>
+                  <td><button class="btn btn-danger" (click)="validateDeleteSelection();">Delete</button></td>
+               </tr>
+           </table>
+          </div>
+
+        </div>
+
+<app-confirm-delete-opportunity [selectedOpportunities]='this.selectedOpportunityIds' (updatedOpportunities)="updateTableAfterDelete($event)"></app-confirm-delete-opportunity>
+<app-select-opportunity></app-select-opportunity>
+<app-select-one-opportunity></app-select-one-opportunity>
+<app-edit-opportunity [opportunity]='this.selectOpportunityForEdit[0]' (closeModalEvent)="updateTableAfterEdit($event)"></app-edit-opportunity>

@@ -1,61 +1,61 @@
-<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Add a Profile</h4>
+        <h4 class="modal-title w-100 font-weight-bold"  *ngIf="profile">Edit {{profile.firstName}}'s Profile</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 <div class="container">
-    <form class="needs-validation"  novalidate  #addProfileForm="ngForm" (submit)="addProfile(addProfileForm.value)" id="formId" name="formName">
+    <form class="needs-validation"  novalidate  #editProfileForm="ngForm" (submit)="updateProfile(editProfileForm.value)" id="editFormId" name="editFormName">
     <div class="form-row">
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3"  *ngIf="profile">
               <label for="firstName">First Name</label>
-              <input type="text" id="firstName" class="form-control"  name="firstName" [(ngModel)]="newProfile.firstName" required>
+              <input type="text" id="firstName" class="form-control"  name="firstName" [(ngModel)]="profile.firstName" required >
                 <div class="invalid-feedback">
                     Please enter first name
                   </div>
             </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3"  *ngIf="profile">
               <label data-error="wrong" data-success="right" for="lastName">Last Name</label>
-              <input type="text" id="lastName" class="form-control"  name="lastName" [(ngModel)]="newProfile.lastName"s required>
+              <input type="text" id="lastName" class="form-control"  name="lastName" [(ngModel)]="profile.lastName" required>
               <div class="invalid-feedback">
                     Please enter last name
                   </div>
             </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="emailId">Email ID</label>
-          <input type="email" id="emailId" class="form-control" name="emailId" [(ngModel)]="newProfile.emailId" required>
+          <input type="email" id="emailId" class="form-control" name="emailId" [(ngModel)]="profile.emailId" required>
           <div class="invalid-feedback">
                 Please enter a valid email ID
               </div>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="phoneNumber">Phone #</label>
-          <input type="text" id="phoneNumber" class="form-control" name="phoneNumber" pattern="\d*" [(ngModel)]="newProfile.phoneNumber" required maxlength="10">
+          <input type="text" id="phoneNumber" class="form-control" name="phoneNumber" pattern="\d*" [(ngModel)]="profile.phoneNumber" required maxlength="10">
             <div class="invalid-feedback">
                 Please enter a valid phone number
               </div>
         </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="title">Title</label>
-            <input type="text" id="title" class="form-control" name="title" [(ngModel)]="newProfile.title" required>
+            <input type="text" id="title" class="form-control" name="title" [(ngModel)]="profile.title" required />
                <div class="invalid-feedback">
                   Please enter a title
                 </div>
           </div>
 
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="numberOfYearsExp"># of Years Experience</label>
-            <input type="number" id="numberOfYearsExp" class="form-control" name="numberOfYearsExp" [(ngModel)]="newProfile.numberOfYearsExp"  required maxlength="2" min="0" max="99">
+            <input type="number" id="numberOfYearsExp" class="form-control" name="numberOfYearsExp" [(ngModel)]="profile.numberOfYearsExp"  required maxlength="2" min="0" max="99">
             <div class="invalid-feedback">
                   Please enter valid number of experience in years
                 </div>
@@ -63,17 +63,17 @@
       </div>
 
       <div class="form-row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="profileSummary">Profile Summary</label>
-            <input type="text" id="profileSummary" class="form-control" name="profileSummary" [(ngModel)]="newProfile.profileSummary"  required maxlength="100">
+            <input type="text" id="profileSummary" class="form-control" name="profileSummary" [(ngModel)]="profile.profileSummary"  required maxlength="100">
              <div class="invalid-feedback">
                   Please enter he profile summary in less than 100 characters
                 </div>
           </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="primarySkills">Primary Skills</label>
-            <select id="primarySkills" class="form-control validate" name="primarySkills" [(ngModel)]="newProfile.primarySkills"  multiple="multiple" required>
+            <select id="primarySkills" class="form-control validate" name="primarySkills" [(ngModel)]="profile.primarySkills"  multiple="multiple" required>
                 <option *ngFor="let skill of skills" [value]="skill.skill">
                     {{skill.skill}}
                   </option>
@@ -83,10 +83,10 @@
                 </div>
           </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" *ngIf="profile">
             <label data-error="wrong" data-success="right" for="secondarySkills">Secondary Skills</label>
-            <select id="secondarySkills" class="form-control" name="secondarySkills" [(ngModel)]="newProfile.secondarySkills"  multiple="multiple" required>
-                    <option *ngFor="let skill of skills" [value]="skill.skill">
+            <select id="secondarySkills" class="form-control" name="secondarySkills" [(ngModel)]="profile.secondarySkills"  multiple="multiple" required>
+                    <option *ngFor="let skill of skills" [value]="skill.skill" >
                       {{skill.skill}}
                     </option>
             </select>
@@ -95,8 +95,14 @@
                 </div>
           </div>
       </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-primary" type="submit" >Add</button>
+      <div class="form-row hidden" *ngIf="profile">
+          <div class="col-md-4 mb-3"  >
+              <input type="hidden" id="id" class="form-control"  name="id" [(ngModel)]="profile.id"  >
+            </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center" *ngIf="profile">
+        <button class="btn btn-primary" type="submit">Update</button>
       </div>
     </form>
     </div>

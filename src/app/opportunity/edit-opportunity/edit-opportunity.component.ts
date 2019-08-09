@@ -1,49 +1,47 @@
 import { OpportunityService } from './../../opportunity.service';
 import { Router } from '@angular/router';
 import { Opportunity } from './../../opportunity.model';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-add-opportunity',
-  templateUrl: './add-opportunity.component.html',
-  styleUrls: ['./add-opportunity.component.css']
+  selector: 'app-edit-opportunity',
+  templateUrl: './edit-opportunity.component.html',
+  styleUrls: ['./edit-opportunity.component.css']
 })
-export class AddOpportunityComponent implements OnInit {
+export class EditOpportunityComponent implements OnInit {
 
+  @Input() opportunity: Opportunity;
 
-  @Output() closeOpportunityModalEvent = new EventEmitter<boolean>();
+  @Output() closeModalEvent = new EventEmitter<boolean>();
 
-  newOpportunity: Opportunity;
-
-  constructor(private router: Router, private oppportunityService: OpportunityService) { }
+  constructor(private router: Router, private opportunityService: OpportunityService) { }
 
   ngOnInit() {
-    this.newOpportunity = new Opportunity();
   }
 
-  addOpportunity( opportunity: Opportunity ) {
+  updateOpportunity(opportunityForm: Opportunity) {
 
     this.validationForm();
 
-    if (!( opportunity.position === undefined)) {
-      this.oppportunityService.createOpportunity(opportunity)
+    if (!( opportunityForm.position === undefined)) {
+      this.opportunityService.updateOpportunity(opportunityForm)
       .subscribe(
         (response: any) => {
           console.log(response);
-          jQuery('#opportunityModal').modal('hide');
-          this.closeOpportunityModalEvent.emit(response);
+          jQuery('#editOpportunityModal').modal('hide');
+          this.closeModalEvent.emit(response);
       },
       (error: any) => {
           console.log(error);
       });
-   }
+    }
   }
 
   validationForm() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByName('opportunityFormName');
+    var forms = document.getElementsByName('editOpportunityFormName');
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function(form) {
       form.addEventListener('click', function(event) {
@@ -55,4 +53,5 @@ export class AddOpportunityComponent implements OnInit {
       }, false);
     });
   }
+
 }

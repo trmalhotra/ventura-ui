@@ -1,0 +1,96 @@
+<div class="modal fade" id="editOpportunityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold"  *ngIf="opportunity">Edit {{opportunity.position}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+<div class="container">
+    <form class="needs-validation"  novalidate id="opportunityModalForm"  #editOpportunityForm="ngForm" (ngSubmit)="updateOpportunity(editOpportunityForm.value)" id="editOpportunityFormId" name="editOpportunityFormName">
+    <div class="form-row">
+          <div class="col-md-4 mb-3" *ngIf="opportunity">
+              <label for="position">Position</label>
+              <input type="text" id="position" class="form-control"  name="position" [(ngModel)]="opportunity.position" required>
+                <div class="invalid-feedback">
+                    Please enter the position
+                  </div>
+            </div>
+
+          <div class="col-md-4 mb-3"  *ngIf="opportunity">
+              <label for="portfolio">Portfolio</label>
+              <input type="text" id="portfolio" class="form-control"  name="portfolio" [(ngModel)]="opportunity.portfolio" required>
+              <div class="invalid-feedback">
+                    Please enter portfolio
+                  </div>
+            </div>
+
+        <div class="col-md-4 mb-3"  *ngIf="opportunity">
+            <label for="clientOwner">Client Owner</label>
+          <input type="text" id="clientOwner" class="form-control" name="clientOwner" [(ngModel)]="opportunity.clientOwner" required>
+          <div class="invalid-feedback">
+                Please enter a Client Owner
+              </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3"  *ngIf="opportunity">
+            <label for="positionStartDate">Position Start Date</label>
+          <input type="date" id="positionStartDate" class="form-control" name="positionStartDate" [ngModel]="opportunity.positionStartDate | date:'yyyy-MM-dd'"  (ngModelChange)="opportunity.positionStartDate = $event" required>
+            <div class="invalid-feedback">
+                Please enter a Position Start Date
+              </div>
+        </div>
+
+        <div class="col-md-4 mb-3"  *ngIf="opportunity">
+            <label for="programName" >Program Name</label>
+            <input type="text" id="programName" class="form-control" name="programName" [(ngModel)]="opportunity.programName" required>
+               <div class="invalid-feedback">
+                  Please enter a program name
+                </div>
+          </div>
+
+        <div class="col-md-4 mb-3"  *ngIf="opportunity">
+            <label for="ltiPoc">LTI POC</label>
+            <input type="text" id="ltiPoc" class="form-control" name="ltiPoc" ngModel [(ngModel)]="opportunity.ltiPoc">
+            <div class="invalid-feedback">
+                  Please enter LTI POC
+             </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3"  *ngIf="opportunity">
+            <label for="recruitmentPoc">Recruitment POC</label>
+            <input type="text" id="recruitmentPoc" class="form-control" name="recruitmentPoc" [(ngModel)]="opportunity.recruitmentPoc" required>
+             <div class="invalid-feedback">
+                  Please enter Recruitment POC
+                </div>
+          </div>
+
+            <div class="col-md-4 mb-3"  *ngIf="opportunity">
+                <label for="numberOfPositions"># of positions</label>
+                <input type="number" id="numberOfPositions" class="form-control" name="numberOfPositions" [(ngModel)]="opportunity.numberOfPositions" required min="0" maxlength="5">
+                 <div class="invalid-feedback">
+                      Please enter number of positions
+                    </div>
+              </div>
+
+      </div>
+
+      <div class="form-row hidden" *ngIf="opportunity">
+          <div class="col-md-4 mb-3"  >
+              <input type="hidden" id="id" class="form-control"  name="id" [(ngModel)]="opportunity.id"  >
+            </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center"  *ngIf="opportunity">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>

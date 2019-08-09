@@ -10,4 +10,5 @@ export class Profile {
   primarySkills: string[];
   secondarySkills: string[];
   isActive: boolean;
+  selected: boolean;
 }

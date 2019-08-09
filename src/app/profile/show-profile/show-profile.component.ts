@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Profile } from 'src/app/profile.model';
 
 @Component({
   selector: 'app-show-profile',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ShowProfileComponent implements OnInit {
 
-  @Input() selectedProfile: any;
+  @Input() profile: Profile;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

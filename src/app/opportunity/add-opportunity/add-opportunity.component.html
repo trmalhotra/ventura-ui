@@ -1,3 +1,89 @@
-<p>
-  add-opportunity works!
-</p>
+<div class="modal fade" id="opportunityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add an Opportunity</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+<div class="container">
+    <form class="needs-validation"  novalidate id="opportunityModalForm"  #addOpportunityForm="ngForm" (ngSubmit)="addOpportunity(addOpportunityForm.value);" id="opportunityFormId" name="opportunityFormName">
+    <div class="form-row">
+          <div class="col-md-4 mb-3">
+              <label for="position">Position</label>
+              <input type="text" id="position" class="form-control"  name="position" [(ngModel)]="newOpportunity.position" required>
+                <div class="invalid-feedback">
+                    Please enter the position
+                  </div>
+            </div>
+
+          <div class="col-md-4 mb-3">
+              <label for="portfolio">Portfolio</label>
+              <input type="text" id="portfolio" class="form-control"  name="portfolio" [(ngModel)]="newOpportunity.portfolio" required>
+              <div class="invalid-feedback">
+                    Please enter portfolio
+                  </div>
+            </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="clientOwner">Client Owner</label>
+          <input type="text" id="clientOwner" class="form-control" name="clientOwner" [(ngModel)]="newOpportunity.clientOwner" required>
+          <div class="invalid-feedback">
+                Please enter a Client Owner
+              </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="positionStartDate">Position Start Date</label>
+          <input type="date" id="positionStartDate" class="form-control" name="positionStartDate" [(ngModel)]="newOpportunity.positionStartDate" required>
+            <div class="invalid-feedback">
+                Please enter a Position Start Date
+              </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="programName">Program Name</label>
+            <input type="text" id="programName" class="form-control" name="programName" [(ngModel)]="newOpportunity.programName" required>
+               <div class="invalid-feedback">
+                  Please enter a program name
+                </div>
+          </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="ltiPoc">LTI POC</label>
+            <input type="text" id="ltiPoc" class="form-control" name="ltiPoc" [(ngModel)]="newOpportunity.ltiPoc" required>
+            <div class="invalid-feedback">
+                  Please enter LTI POC
+             </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="recruitmentPoc">Recruitment POC</label>
+            <input type="text" id="recruitmentPoc" class="form-control" name="recruitmentPoc" [(ngModel)]="newOpportunity.recruitmentPoc" required>
+             <div class="invalid-feedback">
+                  Please enter Recruitment POC
+                </div>
+          </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="numberOfPositions"># of positions</label>
+                <input type="number" id="numberOfPositions" class="form-control" name="numberOfPositions" [(ngModel)]="newOpportunity.numberOfPositions" required min="0" maxlength="5">
+                 <div class="invalid-feedback">
+                      Please enter number of positions
+                    </div>
+              </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-primary" type="submit">Add</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
